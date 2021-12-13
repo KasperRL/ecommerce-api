@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return Product::all();
+        return response()->json(Product::all());
     }
 
     public function store()
@@ -23,12 +23,12 @@ class ProductController extends Controller
     
         $newProduct = Product::create($attributes);
     
-        return $newProduct;
+        return response()->json($newProduct);
     }
 
     public function show($id)
     {
-        return Product::where('id', $id)->get();
+        return response()->json(Product::where('id', $id)->get());
     }
 
     public function update($id)
@@ -43,14 +43,14 @@ class ProductController extends Controller
         ]);
 
         $product->update($attributes);
-    
-        return $product;
+
+        return response()->json($product);
     }
 
     public function destroy($id)
     {
         Product::where('id', $id)->delete();
 
-        return Product::all();
+        return response()->json(Product::all());
     }
 }
