@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         $attributes = request()->validate([
             'name' => ['required', 'max:120'],
-            'price' => ['required'],
+            'price_usd' => ['required'],
             'brand' => ['required', 'max:120'],
             'description' => ['max:255']
         ]);
@@ -36,10 +36,10 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         $attributes = request()->validate([
-            'name' => ['required', 'max:120'],
-            'price' => ['required'],
-            'brand' => ['required', 'max:120'],
-            'description' => ['required', 'max:255']
+            'name' => ['max:120'],
+            'price_usd' => ['numeric'],
+            'brand' => ['max:120'],
+            'description' => ['max:255']
         ]);
 
         $product->update($attributes);
