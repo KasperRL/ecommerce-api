@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,19 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Category::factory(3)->create();
         Product::factory(20)->create();
-        Cart::create([
-            'key' => random_int(100, 2000),
-            'user_id' => random_int(1, 10)
-        ]);
-        Cart::create([
-            'key' => random_int(100, 2000),
-            'user_id' => random_int(1, 10)
-        ]);
-        Cart::create([
-            'key' => random_int(100, 2000),
-            'user_id' => random_int(1, 10)
-        ]);
+        Cart::factory(5)->create();
     }
 }
