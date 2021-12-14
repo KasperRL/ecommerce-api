@@ -17,9 +17,9 @@ class CategoryController extends Controller
         //
     }
 
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        return response()->json(Category::with('products')->find($id));
     }
 
     public function update(Request $request, Category $category)
