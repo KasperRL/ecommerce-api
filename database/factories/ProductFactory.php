@@ -17,7 +17,9 @@ class ProductFactory extends Factory
             'name' => $this->faker->word(),
             'price_usd' => $this->faker->numberBetween(1, 99),
             'brand' => $this->faker->word(),
-            'description' => $this->faker->text()
+            'category' => $this->faker->word(),
+            'description' => $this->faker->text(),
+            'stock' => $this->faker->numberBetween(1, 30)
         ];
     }
 }
