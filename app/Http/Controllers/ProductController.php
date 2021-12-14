@@ -15,19 +15,21 @@ class ProductController extends Controller
     {
         $attributes = request()->validate([
             'name' => ['required', 'max:120'],
-            'price_usd' => ['required'],
+            'price_usd' => ['required', 'numeric'],
             'brand' => ['required', 'max:120'],
-            'description' => ['max:255']
+            'description' => ['max:255'],
+            'stock' => ['required', 'numeric'],
+            'category_id' => ['required', 'numeric']
         ]);
     
         $newProduct = Product::create($attributes);
     
-        return response()->json($newProduct);
+        return response()->json(Product::with('category')->findOrFail($newProduct->id));
     }
 
     public function show($id)
     {
-        return response()->json(Product::where('id', $id)->get());
+        return response()->json(Product::with('category')->findOrFail($id));
     }
 
     public function update($id)
@@ -38,18 +40,20 @@ class ProductController extends Controller
             'name' => ['max:120'],
             'price_usd' => ['numeric'],
             'brand' => ['max:120'],
-            'description' => ['max:255']
+            'description' => ['max:255'],
+            'stock' => ['numeric'],
+            'category_id' => ['numeric']
         ]);
 
         $product->update($attributes);
 
-        return response()->json($product);
+        return response()->json(Product::with('category')->findOrFail($product->id));
     }
 
     public function destroy($id)
     {
         Product::where('id', $id)->delete();
 
-        return response()->json(Product::all());
+        return response()->json(Product::with('category')->get());
     }
 }
