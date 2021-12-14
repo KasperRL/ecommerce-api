@@ -9,7 +9,7 @@ class CartController extends Controller
 {
     public function index()
     {
-        return response()->json(Cart::all());
+        return response()->json(Cart::with(['user', 'items'])->get());
     }
 
     public function store(Request $request)
@@ -19,7 +19,7 @@ class CartController extends Controller
 
     public function show($id)
     {
-        return response()->json(Cart::findOrFail($id));
+        return response()->json(Cart::with('user', 'items')->findOrFail($id));
     }
 
     public function update(Request $request, Cart $cart)
