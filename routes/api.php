@@ -20,7 +20,7 @@ Route::get('/carts/{cart}', [CartController::class, 'show']);
 
 // Category
 Route::get('/categories', [CategoryController::class, 'index']);
-Route::get('/categories/{id}', [CategoryController::class, 'show']);
+Route::get('/categories/{category}', [CategoryController::class, 'show']);
 
 // Brand
 Route::get('/brands', [BrandController::class, 'index']);

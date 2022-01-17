@@ -9,7 +9,6 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        dd(Category::all());
         return response()->json(Category::with('products')->get());
     }
 
@@ -20,10 +19,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        $category = $category->map(function(Category $category){
-            
-        });
-        return response()->json($category);
+        return response()->json($category->load('products'));
     }
 
     public function update(Request $request, Category $category)

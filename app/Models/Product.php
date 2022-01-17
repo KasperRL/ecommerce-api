@@ -12,7 +12,6 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = [];
-    protected $with = ['category', 'brand'];
 
     public function category()
     {

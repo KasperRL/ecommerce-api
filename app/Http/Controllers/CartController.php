@@ -19,7 +19,7 @@ class CartController extends Controller
 
     public function show(Cart $cart)
     {
-        return response()->json($cart);
+        return response()->json($cart->load('user', 'items'));
     }
 
     public function update(Request $request, Cart $cart)

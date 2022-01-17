@@ -29,7 +29,7 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return response()->json($product);
+        return response()->json($product->load('category', 'brand'));
     }
 
     public function update(Product $product)
@@ -45,13 +45,13 @@ class ProductController extends Controller
 
         $product->update($attributes);
 
-        return response()->json($product);
+        return response()->json($product->load('category', 'brand'));
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
 
-        return response()->json(Product::with(['category', 'brand'])->get());
+        return response()->json($product->name . " destroyed.");
     }
 }
