@@ -17,9 +17,9 @@ class BrandController extends Controller
         //
     }
 
-    public function show($id)
+    public function show(Brand $brand)
     {
-        return response()->json(Brand::with('products')->findOrFail($id));
+        return response()->json($brand->load('products'));
     }
 
     public function update(Request $request, Brand $brand)

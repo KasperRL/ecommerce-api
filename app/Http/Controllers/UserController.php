@@ -12,8 +12,8 @@ class UserController extends Controller
         return User::with('cart')->get();
     }
 
-    public function show($id)
+    public function show(User $user)
     {
-        return User::with('cart')->findOrFail($id);
+        return $user->load('cart');
     }
 }

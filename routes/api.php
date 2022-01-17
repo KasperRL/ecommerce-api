@@ -24,8 +24,8 @@ Route::get('/categories/{category}', [CategoryController::class, 'show']);
 
 // Brand
 Route::get('/brands', [BrandController::class, 'index']);
-Route::get('/brands/{id}', [BrandController::class, 'show']);
+Route::get('/brands/{brand}', [BrandController::class, 'show']);
 
 // User
 Route::get('/users', [UserController::class, 'index']);
-Route::get('/users/{id}', [UserController::class, 'show']);
+Route::get('/users/{user}', [UserController::class, 'show']);
