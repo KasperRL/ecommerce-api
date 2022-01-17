@@ -16,7 +16,7 @@ Route::delete('/products/{product}', [ProductController::class, 'destroy']);
 
 // Cart
 Route::get('/carts', [CartController::class, 'index']);
-Route::get('/carts/{id}', [CartController::class, 'show']);
+Route::get('/carts/{cart}', [CartController::class, 'show']);
 
 // Category
 Route::get('/categories', [CategoryController::class, 'index']);

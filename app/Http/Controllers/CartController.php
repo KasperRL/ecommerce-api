@@ -17,9 +17,9 @@ class CartController extends Controller
         //
     }
 
-    public function show($id)
+    public function show(Cart $cart)
     {
-        return response()->json(Cart::with('user', 'items')->findOrFail($id));
+        return response()->json($cart);
     }
 
     public function update(Request $request, Cart $cart)
