@@ -27,15 +27,13 @@ class ProductController extends Controller
         return response()->json(Product::with(['category', 'brand'])->findOrFail($newProduct->id));
     }
 
-    public function show($id)
+    public function show(Product $product)
     {
-        return response()->json(Product::with(['category', 'brand'])->findOrFail($id));
+        return response()->json($product);
     }
 
-    public function update($id)
+    public function update(Product $product)
     {
-        $product = Product::findOrFail($id);
-
         $attributes = request()->validate([
             'name' => ['max:120'],
             'price_usd' => ['numeric'],
@@ -47,12 +45,12 @@ class ProductController extends Controller
 
         $product->update($attributes);
 
-        return response()->json(Product::with(['category', 'brand'])->findOrFail($product->id));
+        return response()->json($product);
     }
 
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        Product::where('id', $id)->delete();
+        $product->delete();
 
         return response()->json(Product::with(['category', 'brand'])->get());
     }
