@@ -24,7 +24,7 @@ class ProductController extends Controller
     
         $newProduct = Product::create($attributes);
     
-        return response()->json(Product::with(['category', 'brand'])->findOrFail($newProduct->id));
+        return response()->json($newProduct->load('category', 'brand'));
     }
 
     public function show(Product $product)
