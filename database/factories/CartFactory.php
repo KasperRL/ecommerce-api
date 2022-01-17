@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CartFactory extends Factory
@@ -14,7 +15,7 @@ class CartFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => random_int(1, 30)
+            'user_id' => User::factory()->create()
         ];
     }
 }
